@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Yoseph Endale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .projects-section { padding: 140px 0 96px; }
+    .projects-intro { text-align: center; margin-bottom: 56px; }
+
+    /* Filter */
+    .filter-bar {
+      display: flex; justify-content: center; gap: 8px;
+      flex-wrap: wrap; margin-bottom: 48px;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      border: 2px solid var(--border); background: transparent;
+      color: var(--muted); cursor: pointer; transition: all .2s;
+      font-family: var(--font-body);
+    }
+    .filter-btn:hover { border-color: var(--text); color: var(--text); }
+    .filter-btn.active { background: var(--text); border-color: var(--text); color: #fff; }
+
+    /* Grid */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: #fff; border-radius: var(--radius-lg);
+      border: 1px solid var(--border); overflow: hidden;
+      transition: all .25s; display: flex; flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+
+    .card-thumb {
+      height: 160px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .thumb-icon { font-size: 52px; position: relative; z-index: 1; }
+    .thumb-label {
+      position: absolute; bottom: 12px; right: 12px;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; padding: 3px 10px;
+      background: rgba(255,255,255,.9); border-radius: 100px;
+      color: var(--text);
+    }
+
+    /* thumb colors per category */
+    .project-card.cat-ml       .card-thumb { background: linear-gradient(135deg, #eff6ff, #f5f3ff); }
+    .project-card.cat-backend  .card-thumb { background: linear-gradient(135deg, #fff3ee, #ecfdf5); }
+    .project-card.cat-security .card-thumb { background: linear-gradient(135deg, #fdf2f8, #fff3ee); }
+    .project-card.cat-fullstack .card-thumb { background: linear-gradient(135deg, #f0fdf4, #eff6ff); }
+
+    .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+    .card-title { font-size: 17px; font-weight: 700; letter-spacing: -.3px; }
+    .card-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; flex: 1; }
+    .card-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .card-stag {
+      font-size: 11px; font-weight: 500; padding: 3px 10px;
+      border-radius: 6px; background: var(--surface);
+      color: var(--muted); border: 1px solid var(--border);
+    }
+    .card-links { display: flex; gap: 10px; margin-top: auto; }
+    .card-link {
+      padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;
+      text-decoration: none; transition: all .2s; border: 1px solid var(--border);
+      color: var(--muted); background: var(--surface);
+    }
+    .card-link:hover { background: var(--text); color: #fff; border-color: var(--text); }
+    .card-link.primary { background: var(--text); color: #fff; border-color: var(--text); }
+    .card-link.primary:hover { opacity: .85; }
+
+    /* Screenshot note */
+    .screenshot-note {
+      background: #eff6ff; border: 1px solid rgba(59,130,246,.2);
+      border-radius: var(--radius); padding: 16px 20px; margin-bottom: 32px;
+      font-size: 13px; color: var(--blue); display: flex; align-items: center; gap: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>Y</span> Yoseph</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-grad nav-cta">Let's talk</a>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="projects-section">
+    <div class="container">
+
+      <div class="projects-intro reveal">
+        <div class="section-label">My work</div>
+        <h1 style="font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px">Things I've built.</h1>
+        <p style="font-size:16px;color:var(--muted);max-width:500px;margin:0 auto">
+          A mix of backend systems, ML experiments, security projects and full-stack apps. Some are deployed, some just on GitHub.
+        </p>
+      </div>
+
+      <div class="screenshot-note reveal">
+        💡 <span>For projects without a live demo, click <strong>GitHub</strong> to see the code and README. Screenshots can be added to <code>assets/img/</code> later.</span>
+      </div>
+
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All (10)</button>
+        <button class="filter-btn" data-filter="ml">ML / AI</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+        <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- 1 -->
+        <div class="project-card cat-ml reveal" data-cat="ml">
+          <div class="card-thumb">
+            <div class="thumb-icon">🎙️</div>
+            <div class="thumb-label">BSc Thesis</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Emergency Voice Assistant</div>
+              <span class="tag-pill purple">ML · NLP</span>
+            </div>
+            <p class="card-desc">Real-time assistant for emergency call centers. Fine-tuned Whisper for speech-to-text in noisy environments and DistilBERT for incident classification. Runs on a Kafka + MQTT microservices stack.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">PyTorch</span>
+              <span class="card-stag">Whisper</span><span class="card-stag">DistilBERT</span>
+              <span class="card-stag">Kafka</span><span class="card-stag">MQTT</span>
+              <span class="card-stag">MongoDB</span><span class="card-stag">Docker</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="project-card cat-ml reveal" data-cat="ml">
+          <div class="card-thumb">
+            <div class="thumb-icon">🧠</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Brain Tumor Detection</div>
+              <span class="tag-pill blue">Deep Learning</span>
+            </div>
+            <p class="card-desc">CNN for classifying brain MRI scans. Reached 99.33% test accuracy and 99.95% ROC-AUC on the Br35H dataset. Used data augmentation, BatchNorm and Dropout to avoid overfitting.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">PyTorch</span>
+              <span class="card-stag">CNN</span><span class="card-stag">scikit-learn</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="project-card cat-security reveal" data-cat="security">
+          <div class="card-thumb">
+            <div class="thumb-icon">🔐</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Secure Internal Comms</div>
+              <span class="tag-pill pink">Security</span>
+            </div>
+            <p class="card-desc">Internal company communication system with MFA (email OTP), RBAC, RSA-encrypted messages, AES key protection and SHA-256 integrity checks. Separate dashboards for Employees, HR and Admins.</p>
+            <div class="card-stack">
+              <span class="card-stag">PHP</span><span class="card-stag">MySQL</span>
+              <span class="card-stag">RSA</span><span class="card-stag">AES</span>
+              <span class="card-stag">MFA</span><span class="card-stag">phpseclib</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="project-card cat-ml reveal" data-cat="ml">
+          <div class="card-thumb">
+            <div class="thumb-icon">📉</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Customer Churn Prediction</div>
+              <span class="tag-pill orange">ML · Data</span>
+            </div>
+            <p class="card-desc">Predicted telecom customer churn using SVM, which reached 98.31% accuracy. Built custom features and tuned hyperparameters with GridSearchCV. Published as a Kaggle notebook.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">scikit-learn</span>
+              <span class="card-stag">SVM</span><span class="card-stag">Pandas</span>
+            </div>
+            <div class="card-links">
+              <a href="https://www.kaggle.com/code/yosephendale/predicting-customer-churn-for-a-telecom-company" target="_blank" class="card-link primary">Kaggle ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="project-card cat-backend reveal" data-cat="backend">
+          <div class="card-thumb">
+            <div class="thumb-icon">📡</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">MQTT IoT Infrastructure</div>
+              <span class="tag-pill green">Backend · IoT</span>
+            </div>
+            <p class="card-desc">IoT pub/sub system using MQTT and Docker. Built publishers and subscribers with Paho, containerized everything with Docker Compose, and set up an isolated network for secure communication between services.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">MQTT</span>
+              <span class="card-stag">Paho</span><span class="card-stag">Docker</span>
+              <span class="card-stag">Docker Compose</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="project-card cat-backend reveal" data-cat="backend">
+          <div class="card-thumb">
+            <div class="thumb-icon">🗄️</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Database Benchmark</div>
+              <span class="tag-pill blue">Backend · Research</span>
+            </div>
+            <p class="card-desc">Compared MySQL, MongoDB, Cassandra, Redis and Neo4j on datasets from 250K to 1M records using 4 queries of increasing complexity. MongoDB was fastest; MySQL was most consistent.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">MySQL</span>
+              <span class="card-stag">MongoDB</span><span class="card-stag">Cassandra</span>
+              <span class="card-stag">Redis</span><span class="card-stag">Neo4j</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="project-card cat-ml reveal" data-cat="ml">
+          <div class="card-thumb">
+            <div class="thumb-icon">🗣️</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">TTS Bot with Personas</div>
+              <span class="tag-pill purple">NLP · LLM</span>
+            </div>
+            <p class="card-desc">Text-to-speech bot using GPT-3.5-Turbo and MaryTTS. Each persona (Darwin, Trump, etc.) has a different speaking style. Personas configured via an Excel file. CLI-based interface.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">Flask</span>
+              <span class="card-stag">OpenAI API</span><span class="card-stag">MaryTTS</span>
+              <span class="card-stag">Pandas</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="project-card cat-fullstack reveal" data-cat="fullstack">
+          <div class="card-thumb">
+            <div class="thumb-icon">🏠</div>
+            <div class="thumb-label">Not deployed yet</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Smart Rent AI App</div>
+              <span class="tag-pill green">Full-Stack · AI</span>
+            </div>
+            <p class="card-desc">Property rental platform with AI tenant screening, scam detection, an NLP chatbot, geolocation and multi-language support. Includes landlord dashboards, real-time SMS alerts and property management.</p>
+            <div class="card-stack">
+              <span class="card-stag">PHP</span><span class="card-stag">MySQL</span>
+              <span class="card-stag">JavaScript</span><span class="card-stag">NLP APIs</span>
+              <span class="card-stag">Geolocation</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="project-card cat-ml reveal" data-cat="ml">
+          <div class="card-thumb">
+            <div class="thumb-icon">💓</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Emotion Prediction</div>
+              <span class="tag-pill blue">ML · Bio-Signals</span>
+            </div>
+            <p class="card-desc">Predicted emotional states from physiological signals using SVM and Logistic Regression. Applied PCA and Recursive Feature Elimination. Evaluated on anxiety and consumer behavior datasets.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">Pandas</span>
+              <span class="card-stag">scikit-learn</span><span class="card-stag">SVM</span>
+              <span class="card-stag">Seaborn</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="project-card cat-fullstack reveal" data-cat="fullstack">
+          <div class="card-thumb">
+            <div class="thumb-icon">🛒</div>
+            <div class="thumb-label">Not deployed yet</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Merkatoonline.com</div>
+              <span class="tag-pill orange">Full-Stack</span>
+            </div>
+            <p class="card-desc">E-commerce platform with product browsing, cart, checkout, order management and admin panel. Secure login with prepared statements and email notifications via PHPMailer.</p>
+            <div class="card-stack">
+              <span class="card-stag">PHP</span><span class="card-stag">MySQL</span>
+              <span class="card-stag">JavaScript</span><span class="card-stag">Bootstrap</span>
+              <span class="card-stag">jQuery</span><span class="card-stag">AJAX</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Yoseph.</a>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/YosephEndale" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="footer-copy">© 2026 Yoseph Endale Tuji</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Read filter from URL param
+    const params = new URLSearchParams(window.location.search);
+    const preset = params.get('filter');
+    if (preset) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.filter === preset) btn.click();
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Yoseph Endale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 72px; align-items: start;
+      padding: 100px 0;
+    }
+
+    /* Profile card */
+    .profile-card {
+      background: #fff; border-radius: var(--radius-lg);
+      border: 1px solid var(--border); overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,.06); position: sticky; top: 100px;
+    }
+    .profile-banner {
+      height: 120px;
+      background: linear-gradient(135deg, #ff6b35, #f59e0b, #3b82f6);
+    }
+    .profile-body { padding: 0 28px 28px; }
+    .profile-avatar {
+      width: 80px; height: 80px; border-radius: 20px;
+      background: var(--grad1); border: 4px solid #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; font-weight: 800; color: #fff;
+      margin-top: -40px; margin-bottom: 16px;
+    }
+    .profile-name { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+    .profile-role { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .profile-info { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .profile-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--muted);
+    }
+    .profile-row span:first-child { font-size: 16px; }
+    .profile-row strong { color: var(--text); }
+    .profile-card .btn { width: 100%; justify-content: center; margin-bottom: 8px; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 28px; margin-top: 32px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
+      width: 2px; background: var(--border); border-radius: 2px;
+    }
+    .tl-item { position: relative; margin-bottom: 32px; }
+    .tl-dot {
+      position: absolute; left: -25px; top: 4px;
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid #fff; box-shadow: 0 0 0 2px currentColor;
+    }
+    .tl-dot.orange { color: var(--orange); background: var(--orange); }
+    .tl-dot.blue   { color: var(--blue);   background: var(--blue); }
+    .tl-dot.green  { color: var(--green);  background: var(--green); }
+    .tl-dot.purple { color: var(--purple); background: var(--purple); }
+    .tl-date { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .tl-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .tl-org { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+    .tl-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .tl-bullets { list-style: none; margin-top: 8px; }
+    .tl-bullets li {
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      padding-left: 16px; position: relative; margin-bottom: 4px;
+    }
+    .tl-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 11px; top: 3px; }
+
+    /* Languages */
+    .lang-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
+    .lang-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px; text-align: center;
+    }
+    .lang-flag { font-size: 28px; margin-bottom: 8px; }
+    .lang-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .lang-level { font-size: 12px; color: var(--muted); }
+    .lang-badge {
+      display: inline-block; margin-top: 8px; padding: 2px 10px;
+      border-radius: 100px; font-size: 11px; font-weight: 700;
+    }
+
+    /* Fun facts */
+    .facts-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 32px; }
+    .fact-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 20px; border: 1px solid var(--border);
+    }
+    .fact-icon { font-size: 24px; margin-bottom: 8px; }
+    .fact-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .fact-text  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; padding: 60px 0; }
+      .profile-card { position: static; }
+      .lang-grid  { grid-template-columns: repeat(3,1fr); }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>Y</span> Yoseph</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-grad nav-cta">Let's talk</a>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Left: profile card -->
+      <div class="reveal">
+        <div class="profile-card">
+          <div class="profile-banner"></div>
+          <div class="profile-body">
+            <div class="profile-avatar">Y</div>
+            <div class="profile-name">Yoseph Endale Tuji</div>
+            <div class="profile-role">Backend Engineer · ML Builder · Security Student</div>
+            <div class="profile-info">
+              <div class="profile-row"><span>📍</span><span>Based in <strong>Rome, Italy</strong></span></div>
+              <div class="profile-row"><span>🇪🇹</span><span>From <strong>Addis Ababa, Ethiopia</strong></span></div>
+              <div class="profile-row"><span>🎓</span><span>MSc <strong>Cybersecurity</strong> @ Sapienza</span></div>
+              <div class="profile-row"><span>✉️</span><span><strong>yosephendale8@gmail.com</strong></span></div>
+              <div class="profile-row"><span>💻</span><span><strong>github.com/YosephEndale</strong></span></div>
+            </div>
+            <a href="resume.pdf" target="_blank" class="btn btn-grad">Download Resume ↗</a>
+            <a href="contact.html" class="btn btn-outline">Get in touch</a>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div style="margin-top: 28px;">
+          <div class="section-label" style="margin-bottom:16px">Languages</div>
+          <div class="lang-grid">
+            <div class="lang-card">
+              <div class="lang-flag">🇪🇹</div>
+              <div class="lang-name">Amharic</div>
+              <div class="lang-level">Mother tongue</div>
+              <div class="lang-badge" style="background:#ecfdf5;color:var(--green)">Native</div>
+            </div>
+            <div class="lang-card">
+              <div class="lang-flag">🇬🇧</div>
+              <div class="lang-name">English</div>
+              <div class="lang-level">Proficient</div>
+              <div class="lang-badge" style="background:#eff6ff;color:var(--blue)">C2</div>
+            </div>
+            <div class="lang-card">
+              <div class="lang-flag">🇮🇹</div>
+              <div class="lang-name">Italian</div>
+              <div class="lang-level">Basic</div>
+              <div class="lang-badge" style="background:#fff3ee;color:var(--orange)">A2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: story + timeline -->
+      <div>
+        <div class="reveal">
+          <div class="section-label">About me</div>
+          <h1 style="font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:20px">
+            I enjoy building things that work well and make sense.
+          </h1>
+          <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px">
+            Hi! I'm Yoseph, a backend engineer originally from Addis Ababa, Ethiopia, now living in Rome. I completed my BSc in Computer Science with a focus on Data Analysis at the University of Messina, and I'm now doing my Master's in Cybersecurity at Sapienza.
+          </p>
+          <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px">
+            My main interests are backend development, machine learning, and NLP. I've worked on everything from microservices with Kafka to fine-tuning transformer models like Whisper and DistilBERT. I also care about security — understanding how systems break helps me build them better.
+          </p>
+          <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:32px">
+            When I'm not coding or studying, I'm usually exploring new tools, working on side projects, or thinking about how AI and security intersect.
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="reveal">
+          <div class="section-label" style="margin-bottom:24px">My journey</div>
+          <div class="timeline">
+
+            <div class="tl-item">
+              <div class="tl-dot purple"></div>
+              <div class="tl-date">Dec 2025 — Present</div>
+              <div class="tl-title">MSc Cybersecurity</div>
+              <div class="tl-org">Sapienza University of Rome 🇮🇹</div>
+              <div class="tl-desc">Studying network security, cryptography, ethical hacking and secure software engineering.</div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot blue"></div>
+              <div class="tl-date">Sep 2025 — Dec 2025</div>
+              <div class="tl-title">Software Developer</div>
+              <div class="tl-org">CIAM — University of Messina 🇮🇹</div>
+              <ul class="tl-bullets">
+                <li>Backend work on Unisign digital signature system — multi-file upload and PagoPA API integration</li>
+                <li>Built Giano attendance platform with React, Vite, WebSockets and Bootstrap Italia</li>
+                <li>Real-time WebSocket channels for kiosk-to-mobile attendance verification</li>
+                <li>Improved API security with CORS-safe architecture and token-based auth</li>
+              </ul>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot orange"></div>
+              <div class="tl-date">Nov 2021 — Dec 2025</div>
+              <div class="tl-title">BSc Computer Science — Data Analysis</div>
+              <div class="tl-org">University of Messina 🇮🇹</div>
+              <div class="tl-desc">Thesis: Design and Implementation of an Emergency Voice Assistant with Whisper and DistilBERT. Built a real-time AI system for emergency call centers using a Kafka microservices architecture.</div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot green"></div>
+              <div class="tl-date">2000</div>
+              <div class="tl-title">Born in Addis Ababa</div>
+              <div class="tl-org">Ethiopia 🇪🇹</div>
+              <div class="tl-desc">Where the story started.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Fun facts -->
+        <div class="reveal" style="margin-top:48px">
+          <div class="section-label" style="margin-bottom:16px">Quick facts</div>
+          <div class="facts-grid">
+            <div class="fact-card">
+              <div class="fact-icon">🎓</div>
+              <div class="fact-title">2 Degrees</div>
+              <div class="fact-text">BSc Data Analysis + MSc Cybersecurity</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-icon">🌍</div>
+              <div class="fact-title">2 Countries</div>
+              <div class="fact-text">Ethiopia born, Italy based</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-icon">🧠</div>
+              <div class="fact-title">Thesis AI model</div>
+              <div class="fact-text">Fine-tuned Whisper + DistilBERT for emergency calls</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-icon">🔐</div>
+              <div class="fact-title">Security-minded</div>
+              <div class="fact-text">Encryption, RBAC and MFA in production projects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Yoseph.</a>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/YosephEndale" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="footer-copy">© 2026 Yoseph Endale Tuji</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

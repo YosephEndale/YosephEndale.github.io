@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Yoseph Endale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .contact-section { padding: 140px 0 96px; }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 72px; align-items: start; margin-top: 64px;
+    }
+
+    /* Info side */
+    .contact-info h2 {
+      font-size: clamp(28px, 3.5vw, 42px); font-weight: 800;
+      letter-spacing: -1px; margin-bottom: 16px;
+    }
+    .contact-info p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 36px; }
+
+    .contact-items { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 20px; background: #fff;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      text-decoration: none; color: inherit; transition: all .2s;
+    }
+    .contact-item:hover { transform: translateX(4px); border-color: var(--orange); }
+    .ci-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      flex-shrink: 0;
+    }
+    .ci-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .ci-value { font-size: 14px; font-weight: 600; color: var(--text); }
+    .ci-arrow { margin-left: auto; color: var(--muted); font-size: 18px; }
+
+    .availability-card {
+      background: linear-gradient(135deg, #fff3ee, #eff6ff);
+      border: 1px solid rgba(255,107,53,.15); border-radius: var(--radius);
+      padding: 20px 24px; display: flex; align-items: center; gap: 14px;
+    }
+    .avail-dot {
+      width: 12px; height: 12px; background: var(--green);
+      border-radius: 50%; flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.6} }
+    .avail-text { font-size: 14px; font-weight: 600; }
+    .avail-sub  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* Form side */
+    .contact-form {
+      background: #fff; border-radius: var(--radius-lg);
+      border: 1px solid var(--border); padding: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.06);
+    }
+    .form-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .form-sub   { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-family: var(--font-body); font-size: 14px; color: var(--text);
+      background: var(--surface); transition: border-color .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--orange); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit { width: 100%; padding: 14px; font-size: 15px; font-weight: 700; border-radius: 12px; margin-top: 4px; }
+
+    .form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px; }
+
+    /* Success message (hidden by default) */
+    .form-success {
+      display: none; text-align: center; padding: 32px 20px;
+    }
+    .form-success .success-icon { font-size: 48px; margin-bottom: 12px; }
+    .form-success h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .form-success p  { font-size: 14px; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row     { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>Y</span> Yoseph</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-grad nav-cta">Let's talk</a>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="contact-section">
+    <div class="container">
+      <div style="text-align:center" class="reveal">
+        <div class="section-label">Contact</div>
+        <h1 style="font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px">Let's talk.</h1>
+        <p style="font-size:16px;color:var(--muted);max-width:460px;margin:0 auto">
+          Whether it's a job, an internship, a research collaboration, or just a question — feel free to reach out.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Left -->
+        <div class="reveal">
+          <h2>Happy to hear from you.</h2>
+          <p>I'm open to backend engineering roles, ML/AI projects, cybersecurity research and internships. Based in Rome, and fine with remote work too.</p>
+
+          <div class="contact-items">
+            <a href="mailto:yosephendale8@gmail.com" class="contact-item">
+              <div class="ci-icon" style="background:#fff3ee">📧</div>
+              <div>
+                <div class="ci-label">Email</div>
+                <div class="ci-value">yosephendale8@gmail.com</div>
+              </div>
+              <div class="ci-arrow">→</div>
+            </a>
+            <a href="https://github.com/YosephEndale" target="_blank" class="contact-item">
+              <div class="ci-icon" style="background:#f3f4f6">🐙</div>
+              <div>
+                <div class="ci-label">GitHub</div>
+                <div class="ci-value">github.com/YosephEndale</div>
+              </div>
+              <div class="ci-arrow">→</div>
+            </a>
+            <a href="resume.pdf" target="_blank" class="contact-item">
+              <div class="ci-icon" style="background:#eff6ff">📄</div>
+              <div>
+                <div class="ci-label">Resume</div>
+                <div class="ci-value">Download PDF</div>
+              </div>
+              <div class="ci-arrow">→</div>
+            </a>
+          </div>
+
+          <div class="availability-card">
+            <div class="avail-dot"></div>
+            <div>
+              <div class="avail-text">Currently available</div>
+              <div class="avail-sub">Open to internships, roles & collaborations</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="reveal">
+          <div class="contact-form">
+            <div id="form-content">
+              <div class="form-title">Send a message</div>
+              <div class="form-sub">I'll get back to you as soon as I can.</div>
+              <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" name="name" placeholder="Alex Smith" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Your email</label>
+                    <input type="email" id="email" name="email" placeholder="alex@example.com" required/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="subject">What's this about?</label>
+                  <select id="subject" name="subject">
+                    <option value="">Select a topic</option>
+                    <option>Job opportunity</option>
+                    <option>Internship</option>
+                    <option>Research collaboration</option>
+                    <option>Project idea</option>
+                    <option>Just saying hi</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Tell me what's on your mind..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-grad form-submit">Send message →</button>
+                <div class="form-note">Or email me directly at yosephendale8@gmail.com</div>
+              </form>
+            </div>
+            <div class="form-success" id="form-success">
+              <div class="success-icon">🎉</div>
+              <h3>Message sent!</h3>
+              <p>Thanks for reaching out. I'll reply as soon as I can.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Yoseph.</a>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/YosephEndale" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="footer-copy">© 2026 Yoseph Endale Tuji</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Contact form submission
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type=submit]');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            document.getElementById('form-content').style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+          } else {
+            btn.textContent = 'Try again';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
