@@ -125,7 +125,7 @@
       // Add more projects here in the future if needed
     };
 
-    // Get project from URL parameter (?project=merkato)
+    // Get project from URL parameter (?project=merkato or ?project=hotel)
     const urlParams = new URLSearchParams(window.location.search);
     const projectKey = urlParams.get('project') || 'merkato';
 
@@ -136,6 +136,7 @@
       document.getElementById('project-subtitle').textContent = project.subtitle;
 
       const gallery = document.getElementById('gallery');
+      
       project.images.forEach(src => {
         const img = document.createElement('img');
         img.src = src;
@@ -157,7 +158,7 @@
       document.getElementById('lightbox').style.display = 'none';
     }
 
-    // Close lightbox with Escape key
+    // Close lightbox when pressing Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === "Escape") closeLightbox();
     });
