@@ -78,7 +78,6 @@
     .card-link.primary { background: var(--text); color: #fff; border-color: var(--text); }
     .card-link.primary:hover { opacity: .85; }
 
-    /* Screenshot note */
     .screenshot-note {
       background: #eff6ff; border: 1px solid rgba(59,130,246,.2);
       border-radius: var(--radius); padding: 16px 20px; margin-bottom: 32px;
@@ -114,12 +113,12 @@
         <div class="section-label">My work</div>
         <h1 style="font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px">Things I've built.</h1>
         <p style="font-size:16px;color:var(--muted);max-width:500px;margin:0 auto">
-          A mix of backend systems, ML experiments, security projects and full-stack apps. Some are on GitHub, Some are on Kaggle.
+          A mix of backend systems, ML experiments, security projects and full-stack apps. Some are on GitHub, some on Kaggle.
         </p>
       </div>
 
       <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All (10)</button>
+        <button class="filter-btn active" data-filter="all">All (12)</button>
         <button class="filter-btn" data-filter="ml">ML / AI</button>
         <button class="filter-btn" data-filter="backend">Backend</button>
         <button class="filter-btn" data-filter="security">Security</button>
@@ -128,31 +127,31 @@
 
       <div class="projects-grid">
 
-        <!-- 1 -->
-        <div class="project-card cat-ml reveal" data-cat="ml">
-          <div class="card-thumb">
-            <div class="thumb-icon">🎙️</div>
-            <div class="thumb-label">BSc Thesis</div>
+        <!-- BSc Thesis - Emergency Voice Assistant -->
+      <div class="project-card cat-ml reveal" data-cat="ml">
+        <div class="card-thumb">
+          <div class="thumb-icon">🎙️</div>
+          <div class="thumb-label">BSc Thesis</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-title">Emergency Voice Assistant</div>
+            <span class="tag-pill purple">ML · NLP</span>
           </div>
-          <div class="card-body">
-            <div class="card-top">
-              <div class="card-title">Emergency Voice Assistant</div>
-              <span class="tag-pill purple">ML · NLP</span>
-            </div>
-            <p class="card-desc">Real-time assistant for emergency call centers. Fine-tuned Whisper for speech-to-text in noisy environments and DistilBERT for incident classification. Runs on a Kafka + MQTT microservices stack.</p>
-            <div class="card-stack">
-              <span class="card-stag">Python</span><span class="card-stag">PyTorch</span>
-              <span class="card-stag">Whisper</span><span class="card-stag">DistilBERT</span>
-              <span class="card-stag">Kafka</span><span class="card-stag">MQTT</span>
-              <span class="card-stag">MongoDB</span><span class="card-stag">Docker</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
-            </div>
+          <p class="card-desc">Real-time assistant for emergency call centers. Fine-tuned Whisper for speech-to-text in noisy environments and DistilBERT for incident classification. Built on a Kafka + MQTT microservices architecture.</p>
+          <div class="card-stack">
+            <span class="card-stag">Python</span><span class="card-stag">PyTorch</span>
+            <span class="card-stag">Whisper</span><span class="card-stag">DistilBERT</span>
+            <span class="card-stag">Kafka</span><span class="card-stag">MQTT</span>
+            <span class="card-stag">MongoDB</span><span class="card-stag">Docker</span>
+          </div>
+          <div class="card-links">
+            <a href="thesis.pdf" target="_blank" class="card-link primary">View Thesis ↗</a>
           </div>
         </div>
+      </div>
 
-        <!-- 2 -->
+        <!-- 2: Brain Tumor Detection -->
         <div class="project-card cat-ml reveal" data-cat="ml">
           <div class="card-thumb">
             <div class="thumb-icon">🧠</div>
@@ -162,19 +161,41 @@
               <div class="card-title">Brain Tumor Detection</div>
               <span class="tag-pill blue">Deep Learning</span>
             </div>
-            <p class="card-desc">CNN for classifying brain MRI scans. Reached 99.33% test accuracy and 99.95% ROC-AUC on the Br35H dataset. Used data augmentation, BatchNorm and Dropout to avoid overfitting.</p>
+            <p class="card-desc">CNN-based model for classifying brain MRI scans. Achieved 99.33% test accuracy and 99.95% ROC-AUC on the Br35H dataset using data augmentation and regularization techniques.</p>
             <div class="card-stack">
               <span class="card-stag">Python</span><span class="card-stag">PyTorch</span>
               <span class="card-stag">CNN</span><span class="card-stag">scikit-learn</span>
             </div>
             <div class="card-links">
-              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
-              <a href="https://www.kaggle.com/code/yosephendale/brain-tumour-detection-with-image-classification" target="_blank" class="card-link">Kaggle ↗</a>
+              <a href="https://www.kaggle.com/code/yosephendale/brain-tumour-detection-with-image-classification" target="_blank" class="card-link primary">Kaggle ↗</a>
             </div>
           </div>
         </div>
 
-        <!-- 3 -->
+        <!-- Database Systems Benchmark -->
+        <div class="project-card cat-backend reveal" data-cat="backend">
+          <div class="card-thumb">
+            <div class="thumb-icon">📊</div>
+            <div class="thumb-label">Research</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Database Systems Benchmark</div>
+              <span class="tag-pill blue">Backend · Research</span>
+            </div>
+            <p class="card-desc">Comparative performance analysis of MySQL, MongoDB, Cassandra, Redis, and Neo4j on datasets ranging from 250K to 1M records. Evaluated 4 queries of increasing complexity. MongoDB performed best in speed; MySQL showed highest consistency.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">MySQL</span>
+              <span class="card-stag">MongoDB</span><span class="card-stag">Cassandra</span>
+              <span class="card-stag">Redis</span><span class="card-stag">Neo4j</span>
+            </div>
+            <div class="card-links">
+              <a href="DB_project.pdf" target="_blank" class="card-link primary">View Report ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4: Secure Internal Comms -->
         <div class="project-card cat-security reveal" data-cat="security">
           <div class="card-thumb">
             <div class="thumb-icon">🔐</div>
@@ -184,11 +205,11 @@
               <div class="card-title">Secure Internal Comms</div>
               <span class="tag-pill pink">Security</span>
             </div>
-            <p class="card-desc">Internal company communication system with MFA (email OTP), RBAC, RSA-encrypted messages, AES key protection and SHA-256 integrity checks. Separate dashboards for Employees, HR and Admins.</p>
+            <p class="card-desc">Internal communication system with MFA (email OTP), RBAC, RSA-encrypted messages, AES key protection and SHA-256 integrity checks. Separate dashboards for Employees, HR and Admins.</p>
             <div class="card-stack">
               <span class="card-stag">PHP</span><span class="card-stag">MySQL</span>
               <span class="card-stag">RSA</span><span class="card-stag">AES</span>
-              <span class="card-stag">MFA</span><span class="card-stag">phpseclib</span>
+              <span class="card-stag">MFA</span>
             </div>
             <div class="card-links">
               <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
@@ -196,7 +217,7 @@
           </div>
         </div>
 
-        <!-- 4 -->
+        <!-- 5: Customer Churn Prediction -->
         <div class="project-card cat-ml reveal" data-cat="ml">
           <div class="card-thumb">
             <div class="thumb-icon">📉</div>
@@ -206,7 +227,7 @@
               <div class="card-title">Customer Churn Prediction</div>
               <span class="tag-pill orange">ML · Data</span>
             </div>
-            <p class="card-desc">Predicted telecom customer churn using SVM, which reached 98.31% accuracy. Built custom features and tuned hyperparameters with GridSearchCV. Published as a Kaggle notebook.</p>
+            <p class="card-desc">Predicted telecom customer churn using SVM, achieving 98.31% accuracy. Built custom features and tuned hyperparameters with GridSearchCV.</p>
             <div class="card-stack">
               <span class="card-stag">Python</span><span class="card-stag">scikit-learn</span>
               <span class="card-stag">SVM</span><span class="card-stag">Pandas</span>
@@ -217,7 +238,7 @@
           </div>
         </div>
 
-        <!-- 5 -->
+        <!-- 6: MQTT IoT Infrastructure -->
         <div class="project-card cat-backend reveal" data-cat="backend">
           <div class="card-thumb">
             <div class="thumb-icon">📡</div>
@@ -227,7 +248,7 @@
               <div class="card-title">MQTT IoT Infrastructure</div>
               <span class="tag-pill green">Backend · IoT</span>
             </div>
-            <p class="card-desc">IoT pub/sub system using MQTT and Docker. Built publishers and subscribers with Paho, containerized everything with Docker Compose, and set up an isolated network for secure communication between services.</p>
+            <p class="card-desc">IoT pub/sub system using MQTT and Docker. Built publishers and subscribers with Paho MQTT, containerized with Docker Compose, and secured with isolated networking.</p>
             <div class="card-stack">
               <span class="card-stag">Python</span><span class="card-stag">MQTT</span>
               <span class="card-stag">Paho</span><span class="card-stag">Docker</span>
@@ -239,29 +260,7 @@
           </div>
         </div>
 
-        <!-- 6 -->
-        <div class="project-card cat-backend reveal" data-cat="backend">
-          <div class="card-thumb">
-            <div class="thumb-icon">🗄️</div>
-          </div>
-          <div class="card-body">
-            <div class="card-top">
-              <div class="card-title">Database Benchmark</div>
-              <span class="tag-pill blue">Backend · Research</span>
-            </div>
-            <p class="card-desc">Compared MySQL, MongoDB, Cassandra, Redis and Neo4j on datasets from 250K to 1M records using 4 queries of increasing complexity. MongoDB was fastest; MySQL was most consistent.</p>
-            <div class="card-stack">
-              <span class="card-stag">Python</span><span class="card-stag">MySQL</span>
-              <span class="card-stag">MongoDB</span><span class="card-stag">Cassandra</span>
-              <span class="card-stag">Redis</span><span class="card-stag">Neo4j</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7 -->
+        <!-- 7: TTS Bot with Personas -->
         <div class="project-card cat-ml reveal" data-cat="ml">
           <div class="card-thumb">
             <div class="thumb-icon">🗣️</div>
@@ -271,7 +270,7 @@
               <div class="card-title">TTS Bot with Personas</div>
               <span class="tag-pill purple">NLP · LLM</span>
             </div>
-            <p class="card-desc">Text-to-speech bot using GPT-3.5-Turbo and MaryTTS. Each persona (Darwin, Trump, etc.) has a different speaking style. Personas configured via an Excel file. CLI-based interface.</p>
+            <p class="card-desc">Text-to-speech bot using GPT-3.5-Turbo and MaryTTS. Different personas (Darwin, Trump, etc.) configured via Excel file. CLI-based interface.</p>
             <div class="card-stack">
               <span class="card-stag">Python</span><span class="card-stag">Flask</span>
               <span class="card-stag">OpenAI API</span><span class="card-stag">MaryTTS</span>
@@ -283,7 +282,7 @@
           </div>
         </div>
 
-        <!-- 8 -->
+        <!-- 8: Smart Rent AI App -->
         <div class="project-card cat-fullstack reveal" data-cat="fullstack">
           <div class="card-thumb">
             <div class="thumb-icon">🏠</div>
@@ -294,11 +293,10 @@
               <div class="card-title">Smart Rent AI App</div>
               <span class="tag-pill green">Full-Stack · AI</span>
             </div>
-            <p class="card-desc">Property rental platform with AI tenant screening, scam detection, an NLP chatbot, geolocation and multi-language support. Includes landlord dashboards, real-time SMS alerts and property management.</p>
+            <p class="card-desc">Property rental platform with AI tenant screening, scam detection, NLP chatbot, geolocation and multi-language support. Includes landlord dashboards and real-time alerts.</p>
             <div class="card-stack">
               <span class="card-stag">PHP</span><span class="card-stag">MySQL</span>
               <span class="card-stag">JavaScript</span><span class="card-stag">NLP APIs</span>
-              <span class="card-stag">Geolocation</span>
             </div>
             <div class="card-links">
               <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
@@ -306,7 +304,7 @@
           </div>
         </div>
 
-        <!-- 9 -->
+        <!-- 9: Emotion Prediction -->
         <div class="project-card cat-ml reveal" data-cat="ml">
           <div class="card-thumb">
             <div class="thumb-icon">💓</div>
@@ -316,11 +314,10 @@
               <div class="card-title">Emotion Prediction</div>
               <span class="tag-pill blue">ML · Bio-Signals</span>
             </div>
-            <p class="card-desc">Predicted emotional states from physiological signals using SVM and Logistic Regression. Applied PCA and Recursive Feature Elimination. Evaluated on anxiety and consumer behavior datasets.</p>
+            <p class="card-desc">Predicted emotional states from physiological signals using SVM and Logistic Regression with PCA and Recursive Feature Elimination.</p>
             <div class="card-stack">
               <span class="card-stag">Python</span><span class="card-stag">Pandas</span>
               <span class="card-stag">scikit-learn</span><span class="card-stag">SVM</span>
-              <span class="card-stag">Seaborn</span>
             </div>
             <div class="card-links">
               <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
@@ -328,7 +325,7 @@
           </div>
         </div>
 
-        <!-- 10 -->
+        <!-- 10: Updated Merkatoonline -->
         <div class="project-card cat-fullstack reveal" data-cat="fullstack">
           <div class="card-thumb">
             <div class="thumb-icon">🛒</div>
@@ -336,17 +333,40 @@
           </div>
           <div class="card-body">
             <div class="card-top">
-              <div class="card-title">Merkatoonline.com</div>
+              <div class="card-title">Merkatoonline</div>
               <span class="tag-pill orange">Full-Stack</span>
             </div>
-            <p class="card-desc">E-commerce platform with product browsing, cart, checkout, order management and admin panel. Secure login with prepared statements and email notifications via PHPMailer.</p>
+            <p class="card-desc">Full-featured e-commerce platform built with Django. Includes product catalog management, user authentication, profile system, shopping cart, order processing, and a complete admin dashboard.</p>
             <div class="card-stack">
-              <span class="card-stag">PHP</span><span class="card-stag">MySQL</span>
-              <span class="card-stag">JavaScript</span><span class="card-stag">Bootstrap</span>
-              <span class="card-stag">jQuery</span><span class="card-stag">AJAX</span>
+              <span class="card-stag">Python</span><span class="card-stag">Django</span>
+              <span class="card-stag">HTML</span><span class="card-stag">CSS</span>
+              <span class="card-stag">JavaScript</span><span class="card-stag">SQLite</span>
             </div>
             <div class="card-links">
-              <a href="https://github.com/YosephEndale" target="_blank" class="card-link primary">GitHub ↗</a>
+              <a href="https://github.com/YosephEndale/Merkatoonline" target="_blank" class="card-link primary">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11: New Hotel Santa Filomena -->
+        <div class="project-card cat-fullstack reveal" data-cat="fullstack">
+          <div class="card-thumb">
+            <div class="thumb-icon">🏨</div>
+            <div class="thumb-label">Not deployed yet</div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">Hotel Santa Filomena</div>
+              <span class="tag-pill green">Full-Stack</span>
+            </div>
+            <p class="card-desc">Comprehensive hotel management system built with Django. Features guest management, room inventory, online booking system, reservation handling, and a restaurant/dining module with internationalization support.</p>
+            <div class="card-stack">
+              <span class="card-stag">Python</span><span class="card-stag">Django</span>
+              <span class="card-stag">HTML</span><span class="card-stag">CSS</span>
+              <span class="card-stag">JavaScript</span><span class="card-stag">i18n</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/YosephEndale/Hotel-Santa-Filomena" target="_blank" class="card-link primary">GitHub ↗</a>
             </div>
           </div>
         </div>
