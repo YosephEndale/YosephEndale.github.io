@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Screenshots — Yoseph Endale</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f8fafc;
+      margin: 0;
+      padding: 40px 20px;
+      color: #1e2937;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin: 0 0 8px 0;
+    }
+    .subtitle {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .lightbox img {
+      max-width: 92%;
+      max-height: 92%;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 48px;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 12px 26px;
+      background: #1e2937;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .back-btn:hover { background: #334155; }
+  </style>
+</head>
+<body>
+
+  <a href="projects.html" class="back-btn">← Back to Projects</a>
+
+  <div class="header">
+    <h1 id="project-title">Project Screenshots</h1>
+    <p class="subtitle" id="project-subtitle"></p>
+  </div>
+
+  <div class="gallery" id="gallery"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    // ================== CONFIGURATION ==================
+    const projects = {
+      merkato: {
+        title: "Merkatoonline",
+        subtitle: "Peer-to-Peer E-commerce Platform",
+        images: [
+          "assets/img/merkato/image1.png",
+          "assets/img/merkato/image2.png",
+          "assets/img/merkato/image3.png",
+          "assets/img/merkato/image4.png",
+          "assets/img/merkato/image5.png",
+          "assets/img/merkato/image6.png",
+          "assets/img/merkato/image7.png",
+          "assets/img/merkato/image8.png"
+        ]
+      },
+      hotel: {
+        title: "Hotel Santa Filomena",
+        subtitle: "Hotel Management System",
+        images: Array.from({length: 27}, (_, i) => `assets/img/hotel/image${i+1}.png`)
+      }
+      // Add more projects here in the future if needed
+    };
+
+    // Get project from URL parameter (?project=merkato)
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectKey = urlParams.get('project') || 'merkato';
+
+    const project = projects[projectKey];
+
+    if (project) {
+      document.getElementById('project-title').textContent = project.title + " — Screenshots";
+      document.getElementById('project-subtitle').textContent = project.subtitle;
+
+      const gallery = document.getElementById('gallery');
+      project.images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = project.title + " Screenshot";
+        img.onclick = () => showLightbox(src);
+        gallery.appendChild(img);
+      });
+    } else {
+      document.getElementById('project-title').textContent = "Project Not Found";
+    }
+
+    // Lightbox functions
+    function showLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+  </script>
+</body>
+</html>
